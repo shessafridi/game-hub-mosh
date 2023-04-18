@@ -20,10 +20,10 @@ export interface Game {
   reviews_count: number;
   saturated_color: string;
   dominant_color: string;
-  platforms: PlatformElement[];
-  parent_platforms: ParentPlatform[];
+  platforms: PlatformWrapper[];
+  parent_platforms: PlatformWrapper[];
   genres: Genre[];
-  stores: Store[];
+  stores: StoreWrapper[];
   clip: null;
   tags: Genre[];
   esrb_rating: EsrbRating;
@@ -54,6 +54,15 @@ export interface Genre {
   domain?: GameDomain;
   language?: string;
 }
+export interface Store {
+  id: number;
+  name: string;
+  slug: string;
+  games_count: number;
+  image_background: string;
+  domain?: GameDomain;
+  language?: string;
+}
 
 export enum GameDomain {
   AppsAppleCOM = 'apps.apple.com',
@@ -66,18 +75,11 @@ export enum GameDomain {
   StorePlaystationCOM = 'store.playstation.com',
   StoreSteampoweredCOM = 'store.steampowered.com',
 }
-export interface ParentPlatform {
-  platform: EsrbRating;
+export interface PlatformWrapper {
+  platform: Platform;
 }
 
-export interface PlatformElement {
-  platform: PlatformPlatform;
-  released_at: null | string;
-  requirements_en: Requirements | null;
-  requirements_ru: Requirements | null;
-}
-
-export interface PlatformPlatform {
+export interface Platform {
   id: number;
   name: string;
   slug: string;
@@ -112,7 +114,7 @@ export interface ShortScreenshot {
   image: string;
 }
 
-export interface Store {
+export interface StoreWrapper {
   id: number;
-  store: Genre;
+  store: Store;
 }
