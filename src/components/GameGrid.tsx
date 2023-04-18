@@ -1,31 +1,31 @@
-import { Text } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { SimpleGrid, Text } from '@chakra-ui/react';
 
-import { FetchGamesResponse } from '../models/fetch-games-response';
-import { Game } from '../models/game';
-import apiClient from '../services/ali-client';
+import useGames from '../hooks/useGames';
+import GameCard from './GameCard';
 
 type Props = {};
 
 function GameGrid({}: Props) {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    apiClient
-      .get<FetchGamesResponse>('/games')
-      .then(res => setGames(res.data.results))
-      .catch(err => setError(err.message));
-  }, []);
+  const { games, error } = useGames();
 
   return (
     <>
       {error && <Text>{error}</Text>}
-      <ul>
+
+      <SimpleGrid
+        padding={'10px'}
+        columns={{
+          base: 1,
+          md: 2,
+          lg: 3,
+          xl: 5,
+        }}
+        spacing={10}
+      >
         {games.map(game => (
-          <li key={game.id}>{game.name}</li>
+          <GameCard key={game.id} game={game} />
         ))}
-      </ul>
+      </SimpleGrid>
     </>
   );
 }
