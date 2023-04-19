@@ -1,4 +1,4 @@
-export interface RawgResponse<T> {
+export interface FetchResponse<T> {
   count: number;
   next: string;
   previous: null;
@@ -9,12 +9,12 @@ export interface RawgResponse<T> {
   noindex: boolean;
   nofollow: boolean;
   description: string;
-  filters: GamesFilters;
+  filters: RequestFilters;
   nofollow_collections: string[];
   results: T[];
 }
 
-export interface GamesFilters {
+export interface RequestFilters {
   years: FilterDefinition[];
 }
 

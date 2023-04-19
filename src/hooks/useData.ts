@@ -1,7 +1,7 @@
 import { CanceledError } from 'axios';
 import { useEffect, useState } from 'react';
 
-import { RawgResponse } from '../models/fetch-games-response';
+import { FetchResponse } from '../models/fetch-response';
 import apiClient from '../services/api-client';
 
 const useData = <T>(endpoint: string) => {
@@ -13,7 +13,7 @@ const useData = <T>(endpoint: string) => {
     const controller = new AbortController();
     setLoading(true);
     apiClient
-      .get<RawgResponse<T>>(endpoint, { signal: controller.signal })
+      .get<FetchResponse<T>>(endpoint, { signal: controller.signal })
       .then(res => {
         setData(res.data.results);
         setLoading(false);
