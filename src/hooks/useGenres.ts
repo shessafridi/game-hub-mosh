@@ -2,12 +2,11 @@ import { CanceledError } from 'axios';
 import { useEffect, useState } from 'react';
 
 import { RawgResponse } from '../models/fetch-games-response';
-import { Game } from '../models/game';
+import { Genre } from '../models/game';
 import apiClient from '../services/api-client';
 
-const log = console.log;
-const useGames = () => {
-  const [games, setGames] = useState<Game[]>([]);
+const useGenres = () => {
+  const [genre, setGenre] = useState<Genre[]>([]);
   const [error, setError] = useState('');
   const [isLoading, setLoading] = useState(false);
 
@@ -15,9 +14,9 @@ const useGames = () => {
     const controller = new AbortController();
     setLoading(true);
     apiClient
-      .get<RawgResponse<Game>>('/games', { signal: controller.signal })
+      .get<RawgResponse<Genre>>('/genres', { signal: controller.signal })
       .then(res => {
-        setGames(res.data.results);
+        setGenre(res.data.results);
         setLoading(false);
       })
       .catch(err => {
@@ -29,6 +28,6 @@ const useGames = () => {
     return () => controller.abort();
   }, []);
 
-  return { games, error, isLoading };
+  return { genre, error, isLoading };
 };
-export default useGames;
+export default useGenres;

@@ -1,6 +1,4 @@
-import { Game } from './game';
-
-export interface FetchGamesResponse {
+export interface RawgResponse<T> {
   count: number;
   next: string;
   previous: null;
@@ -13,7 +11,7 @@ export interface FetchGamesResponse {
   description: string;
   filters: GamesFilters;
   nofollow_collections: string[];
-  results: Game[];
+  results: T[];
 }
 
 export interface GamesFilters {
