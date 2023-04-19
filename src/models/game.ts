@@ -1,3 +1,5 @@
+import { Genre } from './genre';
+
 export interface Game {
   id: number;
   slug: string;
@@ -25,7 +27,7 @@ export interface Game {
   genres: Genre[];
   stores: StoreWrapper[];
   clip: null;
-  tags: Genre[];
+  tags: Tag[];
   esrb_rating: EsrbRating;
   short_screenshots: ShortScreenshot[];
 }
@@ -45,7 +47,7 @@ export interface EsrbRating {
   slug: string;
 }
 
-export interface Genre {
+export interface Tag {
   id: number;
   name: string;
   slug: string;
