@@ -8,7 +8,7 @@ import GameCardSkeleton from './GameCardSkeleton';
 type Props = {};
 
 function GameGrid({}: Props) {
-  const { games, error, isLoading } = useGames();
+  const { data, error, isLoading } = useGames();
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
@@ -32,7 +32,7 @@ function GameGrid({}: Props) {
             </GameCardContainer>
           ))}
         {!isLoading &&
-          games.map(game => (
+          data.map(game => (
             <GameCardContainer key={game.id}>
               <GameCard game={game} />
             </GameCardContainer>
