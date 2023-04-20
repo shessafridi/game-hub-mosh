@@ -1,3 +1,5 @@
+import { Platform } from '../models/game';
+
 const platformsData = [
   {
     id: 1,
@@ -21,85 +23,6 @@ const platformsData = [
     id: 2,
     name: 'PlayStation',
     slug: 'playstation',
-    platforms: [
-      {
-        id: 187,
-        name: 'PlayStation 5',
-        slug: 'playstation5',
-        games_count: 841,
-        image_background:
-          'https://media.rawg.io/media/games/840/8408ad3811289a6a5830cae60fb0b62a.jpg',
-        image: null,
-        year_start: 2020,
-        year_end: null,
-      },
-      {
-        id: 18,
-        name: 'PlayStation 4',
-        slug: 'playstation4',
-        games_count: 6611,
-        image_background:
-          'https://media.rawg.io/media/games/618/618c2031a07bbff6b4f611f10b6bcdbc.jpg',
-        image: null,
-        year_start: null,
-        year_end: null,
-      },
-      {
-        id: 16,
-        name: 'PlayStation 3',
-        slug: 'playstation3',
-        games_count: 3243,
-        image_background:
-          'https://media.rawg.io/media/games/b49/b4912b5dbfc7ed8927b65f05b8507f6c.jpg',
-        image: null,
-        year_start: null,
-        year_end: null,
-      },
-      {
-        id: 15,
-        name: 'PlayStation 2',
-        slug: 'playstation2',
-        games_count: 1976,
-        image_background:
-          'https://media.rawg.io/media/games/2ee/2eef5ed5e82c28d1299ecc2a0e60f2cb.jpg',
-        image: null,
-        year_start: null,
-        year_end: null,
-      },
-      {
-        id: 27,
-        name: 'PlayStation',
-        slug: 'playstation1',
-        games_count: 1613,
-        image_background:
-          'https://media.rawg.io/media/screenshots/ba5/ba5f0dd05f44cc48c918683764e3a125.jpg',
-        image: null,
-        year_start: null,
-        year_end: null,
-      },
-      {
-        id: 19,
-        name: 'PS Vita',
-        slug: 'ps-vita',
-        games_count: 1529,
-        image_background:
-          'https://media.rawg.io/media/games/85c/85c8ae70e7cdf0105f06ef6bdce63b8b.jpg',
-        image: null,
-        year_start: null,
-        year_end: null,
-      },
-      {
-        id: 17,
-        name: 'PSP',
-        slug: 'psp',
-        games_count: 1374,
-        image_background:
-          'https://media.rawg.io/media/games/4ad/4ad6ab9cfe8146224330598a4a62fb14.jpg',
-        image: null,
-        year_start: null,
-        year_end: null,
-      },
-    ],
   },
   {
     id: 3,
@@ -658,6 +581,6 @@ const platformsData = [
       },
     ],
   },
-];
+] as Platform[];
 
 export default platformsData;

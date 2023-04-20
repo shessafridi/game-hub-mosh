@@ -1,4 +1,6 @@
-const genresData = [
+import { Genre } from '../models/genre';
+
+const genresData: Genre[] = [
   {
     id: 4,
     name: 'Action',
