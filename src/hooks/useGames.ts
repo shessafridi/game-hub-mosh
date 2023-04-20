@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 
-import { Game, Platform } from '../models/game';
-import { Genre } from '../models/genre';
+import { Game } from '../models/game';
+import { GameQuery } from '../models/game-query';
 import useData from './useData';
 
-const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
-) =>
+const useGames = (gameQuery: GameQuery) =>
   useData<Game>(
     '/games',
-    { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
-    [selectedGenre?.id, selectedPlatform?.id]
+    {
+      params: {
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id,
+      },
+    },
+    [gameQuery]
   );
 export default useGames;
