@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Genre } from '../models/game';
-import useData from './useData';
+import genresData from '../data/genres';
 
-const useGenres = () => useData<Genre>('/genres');
+const useGenres = () => ({ data: genresData, isLoading: false, error: null });
 export default useGenres;
