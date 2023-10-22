@@ -7,16 +7,20 @@ import { Platform } from '../models/game';
 
 type PlatformSelectorProps = {
   onSelectPlatform: (platform: Platform) => any;
-  selectedPlatform: Platform | null;
+  selectedPlatformId?: number;
 };
 
 function PlatformSelector({
-  selectedPlatform,
+  selectedPlatformId,
   onSelectPlatform,
 }: PlatformSelectorProps) {
   const { data, error, isLoading } = usePlatforms();
 
   if (error) return null;
+
+  const selectedPlatform = data.results.find(
+    platform => platform.id === selectedPlatformId
+  );
 
   return (
     <Menu>
