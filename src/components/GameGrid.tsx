@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
-import { Box, Button, SimpleGrid, Text } from '@chakra-ui/react';
+import { Flex, SimpleGrid, Spinner, Text } from '@chakra-ui/react';
 
 import useGames from '../hooks/useGames';
 import { GameQuery } from '../models/game-query';
@@ -13,21 +14,41 @@ type GameGridProps = {
 };
 
 function GameGrid({ gameQuery }: GameGridProps) {
-  const {
-    data,
-    error,
-    isLoading,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useGames(gameQuery);
+  const { data, error, isLoading, fetchNextPage, hasNextPage } =
+    useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   if (error) return <Text>{error?.message}</Text>;
 
+  const fetchedGamesCount =
+    data?.pages.reduce((acc, curr) => curr.results.length + acc, 0) || 0;
+
   return (
-    <Box padding='10px'>
+    <InfiniteScroll
+      dataLength={fetchedGamesCount}
+      hasMore={hasNextPage}
+      next={fetchNextPage}
+      loader={
+        <Flex w='100%' justify='center'>
+          <Spinner my='4' />
+        </Flex>
+      }
+      pullDownToRefresh
+      pullDownToRefreshThreshold={50}
+      pullDownToRefreshContent={
+        <Text align='center' my='3'>
+          &#8595; Pull down to refresh
+        </Text>
+      }
+      releaseToRefreshContent={
+        <Text align='center' my='3'>
+          &#8593; Release to refresh
+        </Text>
+      }
+      refreshFunction={fetchNextPage}
+    >
       <SimpleGrid
+        padding='10px'
         columns={{
           base: 1,
           md: 2,
@@ -42,6 +63,7 @@ function GameGrid({ gameQuery }: GameGridProps) {
               <GameCardSkeleton />
             </GameCardContainer>
           ))}
+
         {!isLoading &&
           data?.pages.map((page, pageIndex) => (
             <Fragment key={pageIndex}>
@@ -53,17 +75,7 @@ function GameGrid({ gameQuery }: GameGridProps) {
             </Fragment>
           ))}
       </SimpleGrid>
-      {!isLoading && hasNextPage && (
-        <Button
-          mt='6'
-          mb='12'
-          onClick={() => fetchNextPage()}
-          disabled={isFetchingNextPage}
-        >
-          {isFetchingNextPage ? 'Loading...' : 'Load More'}
-        </Button>
-      )}
-    </Box>
+    </InfiniteScroll>
   );
 }
 
