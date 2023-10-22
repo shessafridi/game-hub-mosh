@@ -1,16 +1,16 @@
 export interface FetchResponse<T> {
   count: number;
-  next: string;
-  previous: null;
-  seo_title: string;
-  seo_description: string;
-  seo_keywords: string;
-  seo_h1: string;
-  noindex: boolean;
-  nofollow: boolean;
-  description: string;
-  filters: RequestFilters;
-  nofollow_collections: string[];
+  next: string | null;
+  previous: string | null;
+  seo_title?: string;
+  seo_description?: string;
+  seo_keywords?: string;
+  seo_h1?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  description?: string;
+  filters?: RequestFilters;
+  nofollow_collections?: string[];
   results: T[];
 }
 

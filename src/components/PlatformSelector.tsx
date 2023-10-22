@@ -2,6 +2,7 @@ import { BsChevronDown } from 'react-icons/bs';
 
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 
+import { usePlatform } from '../hooks/usePlatform';
 import usePlatforms from '../hooks/usePlatforms';
 import { Platform } from '../models/game';
 
@@ -15,12 +16,9 @@ function PlatformSelector({
   onSelectPlatform,
 }: PlatformSelectorProps) {
   const { data, error, isLoading } = usePlatforms();
+  const selectedPlatform = usePlatform(selectedPlatformId);
 
   if (error) return null;
-
-  const selectedPlatform = data.results.find(
-    platform => platform.id === selectedPlatformId
-  );
 
   return (
     <Menu>
