@@ -31,7 +31,7 @@ function GenreList({ selectedGenre, onSelectGenre }: GenreListProps) {
       </Heading>
       <List>
         {!isLoading &&
-          data.map(genre => (
+          data?.results.map(genre => (
             <ListItem key={genre.id} paddingY='5px'>
               <HStack>
                 <Image
