@@ -15,9 +15,7 @@ function GameTrailer({ gameId }: Props) {
 
   if (!first?.data?.max) return null;
 
-  return (
-    <video src={first.data.max} autoPlay controls poster={first.preview} />
-  );
+  return <video src={first.data.max} controls poster={first.preview} />;
 }
 
 export default GameTrailer;

@@ -11,7 +11,7 @@ function GameScreenshots({ gameId }: Props) {
   if (error || !screenshots) throw error;
 
   return (
-    <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} gap='5' mt='5'>
+    <SimpleGrid columns={{ base: 1, md: 2 }} gap='3' mt='5'>
       {screenshots.results.map(screenshot => (
         <Image src={screenshot.image} />
       ))}
