@@ -4,6 +4,7 @@ import { Heading, Spinner } from '@chakra-ui/react';
 
 import ExpanableText from '../components/ExpanableText';
 import GameAttributes from '../components/GameAttributes';
+import GameScreenshots from '../components/GameScreenshots';
 import GameTrailer from '../components/GameTrailer';
 import { useGame } from '../hooks/useGame';
 
@@ -24,6 +25,7 @@ export function GameDetailPage() {
       <GameAttributes game={game} />
 
       <GameTrailer gameId={game.id} />
+      <GameScreenshots gameId={game.id} />
     </>
   );
 }
