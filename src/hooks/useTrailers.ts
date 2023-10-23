@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { Game } from '../models/game';
-import { Publisher } from '../models/publisher';
-import { Trailer } from '../models/trailer';
+import Game from '../models/game';
+import Publisher from '../models/publisher';
+import Trailer from '../models/trailer';
 import ApiClient from '../services/api-client';
 
 export type GameWithDetails = Game & {

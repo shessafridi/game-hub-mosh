@@ -1,6 +1,6 @@
-import { Genre } from './genre';
+import Genre from './genre';
 
-export interface Game {
+export default interface Game {
   id: number;
   slug: string;
   name: string;

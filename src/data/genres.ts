@@ -1,5 +1,5 @@
-import { FetchResponse } from '../models/fetch-response';
-import { Genre } from '../models/genre';
+import FetchResponse from '../models/fetch-response';
+import Genre from '../models/genre';
 
 const genresData: FetchResponse<Genre> = {
   count: 19,

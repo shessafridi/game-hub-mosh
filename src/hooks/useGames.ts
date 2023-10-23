@@ -2,8 +2,8 @@ import ms from 'ms';
 
 import { useInfiniteQuery } from '@tanstack/react-query';
 
-import { FetchResponse } from '../models/fetch-response';
-import { Game } from '../models/game';
+import FetchResponse from '../models/fetch-response';
+import Game from '../models/game';
 import ApiClient from '../services/api-client';
 import useGameQueryStore from './useGameQueryStore';
 

@@ -1,4 +1,4 @@
-import { FetchResponse } from '../models/fetch-response';
+import FetchResponse from '../models/fetch-response';
 import { Platform } from '../models/game';
 
 const platformsData = {
