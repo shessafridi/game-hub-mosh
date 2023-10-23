@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
 
-import { Heading, Spinner, Text } from '@chakra-ui/react';
+import { Heading, Spinner } from '@chakra-ui/react';
 
+import ExpanableText from '../components/ExpanableText';
+import GameAttributes from '../components/GameAttributes';
 import { useGame } from '../hooks/useGame';
 
-type Props = {};
-
-function GameDetailPage({}: Props) {
+export function GameDetailPage() {
   const { slug } = useParams();
 
   const { data: game, error, isLoading } = useGame(slug!);
@@ -18,9 +18,9 @@ function GameDetailPage({}: Props) {
   return (
     <>
       <Heading>{game.name}</Heading>
-      <Text mt='4'>{game.description_raw}</Text>
+      <ExpanableText>{game.description_raw}</ExpanableText>
+
+      <GameAttributes game={game} />
     </>
   );
 }
-
-export default GameDetailPage;
