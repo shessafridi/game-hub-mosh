@@ -1,5 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
+import { Box } from '@chakra-ui/react';
+
 import NavBar from '../components/NavBar';
 
 type Props = {};
@@ -8,8 +10,9 @@ function Layout({}: Props) {
   return (
     <>
       <NavBar />
-
-      <Outlet />
+      <Box p='5'>
+        <Outlet />
+      </Box>
     </>
   );
 }

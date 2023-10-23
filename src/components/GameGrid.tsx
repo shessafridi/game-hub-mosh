@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { Link } from 'react-router-dom';
 
 import { Flex, SimpleGrid, Spinner, Text } from '@chakra-ui/react';
 
@@ -27,19 +28,19 @@ function GameGrid() {
           <Spinner my='4' />
         </Flex>
       }
-      pullDownToRefresh
-      pullDownToRefreshThreshold={50}
-      pullDownToRefreshContent={
-        <Text align='center' my='3'>
-          &#8595; Pull down to refresh
-        </Text>
-      }
-      releaseToRefreshContent={
-        <Text align='center' my='3'>
-          &#8593; Release to refresh
-        </Text>
-      }
-      refreshFunction={fetchNextPage}
+      // pullDownToRefresh
+      // pullDownToRefreshThreshold={50}
+      // pullDownToRefreshContent={
+      //   <Text align='center' my='3'>
+      //     &#8595; Pull down to refresh
+      //   </Text>
+      // }
+      // releaseToRefreshContent={
+      //   <Text align='center' my='3'>
+      //     &#8593; Release to refresh
+      //   </Text>
+      // }
+      // refreshFunction={fetchNextPage}
     >
       <SimpleGrid
         padding='10px'
@@ -63,7 +64,9 @@ function GameGrid() {
             <Fragment key={pageIndex}>
               {page?.results.map(game => (
                 <GameCardContainer key={game.id}>
-                  <GameCard game={game} />
+                  <Link to={`/games/${game.slug}`}>
+                    <GameCard game={game} />
+                  </Link>
                 </GameCardContainer>
               ))}
             </Fragment>
